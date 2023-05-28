@@ -10,7 +10,12 @@ export const Home = () => {
   useEffect(() => {
     setIsLoading(true);
     getTrendingCocktails()
-      .then((data) => setCoctails(data))
+      .then((data) => {
+        const normalizeResponse = data.map(
+          (cocktail) => cocktail.drinks[0]
+        );
+
+        setCoctails(normalizeResponse);})
       .finally(() => setIsLoading(false));
   }, []);
   return (
