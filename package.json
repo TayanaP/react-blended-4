@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "homepage": "https://TayanaP.github.io/react-blended-4/",
   "scripts": {
     "start": "vite",
     "build": "vite build",
