@@ -1,7 +1,24 @@
-export const SearchForm = () => {
+import { useState } from "react";
+
+export const SearchForm = ({onSubmit}) => {
+  const [value, setValue] = useState("")
+  const handleChange = event => {
+    setValue(event.target.value)
+  }
+  const handleSubmit = event => 
+  {
+    event.preventDefault() 
+    if (!value)
+    {
+      alert('Select any coctail')
+      return;
+    }
+    onSubmit(value);
+    setValue("");
+    }
   return (
     <div className='p-4 space-x-6 bg-white rounded-xl shadow-md max-w-2xl mx-auto mb-10'>
-      <form className='w-full flex items-center gap-2'>
+      <form className='w-full flex items-center gap-2' onSubmit={handleSubmit}>
         <div className='relative flex bg-gray-100 w-full rounded-lg'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
@@ -18,7 +35,7 @@ export const SearchForm = () => {
             />
           </svg>
 
-          <input
+          <input onChange={handleChange}value={value}
             className='bg-gray-100 w-full p-3 rounded-lg pl-12 text-md font-medium'
             type='text'
             placeholder='Enter name of cocktail...'
